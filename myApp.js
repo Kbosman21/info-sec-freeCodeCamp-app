@@ -18,6 +18,15 @@ app.use(helmet.hsts({
 }));
 app.use(helmet.dnsPrefetchControl({ allow: false }));
 app.use(nocache());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", 'trusted-cdn.com']
+    }
+  })
+);
+
 
 
 
