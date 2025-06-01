@@ -2,6 +2,8 @@ const express = require('express');
 const helmet = require('helmet');
 const app = express();
 const ninetyDaysInSeconds = 90 * 24 * 60 * 60;
+const nocache = require('nocache');
+
 
 
 
@@ -15,7 +17,7 @@ app.use(helmet.hsts({
   force: true
 }));
 app.use(helmet.dnsPrefetchControl({ allow: false }));
-
+app.use(nocache());
 
 
 
